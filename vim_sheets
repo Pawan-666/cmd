@@ -1,0 +1,155 @@
+1> vi/vim to open vim in terminal
+2> :q!  to quit vim and return in terminal(: to get to the command line mode)
+3> vi/vim [file_name]/[existing_file_name] to create a new file/work on a existing file.(we are in normal mode)
+4> i(lowercase) to get in insert mode.Anything typed goes into the file.
+		A to insert/append with cursor positioned in the end of line.
+		I to insert with cursor positioned at the beninging 
+4> Esc_ to get back to the normal mode.
+5> :wq  to quit the vim( wq=write and quit)
+6> :w to save before editing
+7> u to undo
+8> ctrl+r to redo that undo
+9> :set nu!  to toggle the number lines 
+
+NAVIGATION
+
+j= move the cursor to the down
+k= move the cursor to the up
+l= move the cursor to the right
+h= move the cursor to the left
+(These are alterantive to the arrow keys)
+
+*Holding the [j/k/l/h] makes the movement faster
+
+Cntrl+f to move to (f)forward a page down.
+Cntrl+b to move to (b)backward a page back.
+*Holding cntrl+f to go the end of the page,other to the start of the page*
+
+
+[no.]w/w = move forward per word including symbols
+W = move forward using space as word boundaries
+b = move backward per word including symbols
+B = move backward using space as word boundaries
+. = repeats the previous command
+
+z and enter to make the current cursor position to make it as a top of a current window
+
+^ = go to the start of the line(after indent)
+0 = go to the start of the line before indent
+$ = go to the end of the line after indent if it has indent
+
+
+DELETING:
+
+x/dl = delete the letter on the cursor
+X/dh = delete a letter before/left of the cursor, hold to delete the whole line
+[no.]dw/dw = deletes a word,when in th middle of a word deletes the letter coming on including cursor(deletes word)
+dj = deletes a current line and a line below it
+dk = deletes a current line and a line above it
+d0 = deletes words before the cursor on a line
+D/d$ = deletes from current position till the end of the line
+dd = deletes the current line no matter where the cursor is
+[no.]dd= deletes no.s of lines below including the current line
+
+INSERTING CHANGING REPLACING JOINING:
+
+I =cursor jumps to the begining with insert mode.
+a =appends text after the current cursor position(insert mode)
+A =jumps and appends at the end of the line(insert mode) 
+o =makes a new line below with insert mode on
+O =makes a new line above with insert mode on
+[no]i[anything]Esc = write anything repeatedly upto the given no.
+[no]o[anything]Esc = start no. of line with anything upto no. of lines given
+R =whatever typed replaces the current text(insert mode)
+r =only replaces one character and goes back to normal mode
+cw =deletes that word and puts us in insert mode
+"[a-z]cw =deletes that word and puts us in insert mode and puts that word in [a-z] register
+C/c$ =deletes from current position to the end of the line and puts us in insert position
+cc =deletes entire line and puts us in insert mode
+	[no]cc
+~ =toggles between lowercase and uppercase
+	~ = multiple to change the case of the entire word
+g~w =change the case of the entire word
+g~~/g~$ =change the case of the entire line
+guw =change the case of the word to lowercase
+gUw =change the case of the word to uppercase
+guu =change the case of the entire line to lowercase
+gUU =change the case of the entire line to uppercase
+J =appends the line below to the current line with addition of space in between
+	[no.]J
+gJ =appends without space
+	[no.]J
+
+SEARCHING
+
+f[a-z/ /0-9/./A-Z] = to search that character in the line
+F[a-z/ /0-9/./A-Z] = to search that character in the line but backwards
+	[no.]f/F[a-z/ /0-9/./A-Z] 
+	; = to keep searching forward
+	, = to keep searching backward(better than typing f/F[c]
+dt[c] = deletes upto that character in a line
+/[c/word] = shows the instances of that character/word throughout the file(jumps into the 1st search result as well)
+	n = keep pressing n to see that character/word in other lines as well
+	N = in backward direction
+
+/[c/word]
+	cw		
+		[c/word]
+			Esc
+				n
+					.  = changes the character to new character wherever needed
+d/[c/word] = deletes everthing from current cursor position upto that search result
+"[a-z]y/[c] = yanks upto the specified search result to the specified register
+
+SEARCH FIND REPLACE
+
+:s/[old]/[new] = substitues old with new in the line
+	:s/[old]/[new]/g = substitues old with new throughout the file from the current position
+	:[line no,no]s/[old]/[new]/g = substitues old with new in the no. of lines included
+	:%s[old]/[new] = substitues old with new throughout the file
+		:.,$[old]/[new] = . means current line and $ means end of the file
+			:.,[no] = from the current line to the specified line no.
+				:[no],$ = from the line no. to the end of the file
+
+
+
+EXTRAS:
+
+gg = go to the start of the page/line
+G  = go to the end of the page/lines
+[line_no.]gg/G = go to the line no
+:[line_no.] = go to the line no
+:$ = go to the end of the page/lines
+Cntrl+g =to know the current position
+gCntrlg =to know more details
+:h = to open help window
+:h [text/command] = to know about that command
+Ctrl f f = to switch to the help and current file window
+:q = to quit the help window
+
+:set ruler = automatically shows the current cursor column and line  
+:set ruler! = toggles on and off the set ruler command.
+:set noruler = does its job
+
+CUT/DELETE COPY/YANK PASTE/PUT:
+
+[no.]dd = deletes the line and puts into the default register
+    	p  = paste the default register content below the line
+    	shift +p  = paste above that line with content from the default registry
+x  = delete a letter
+	p = put it after a current position
+[no.]/dw/dW  = to delete a word
+	p/P = put it after/before
+yy = Yank the line
+	p = duplicates that line
+"0P = put the yanked line above the cursor(paste from the zero register)
+"[0-9]p/P = put the line from the respective register
+
+*There are 26 registers(a-z)
+"[a-z]yy  = yank that line in a [a-z] registry
+	"[a]p/P to put the line on a registry below the current line
+"[A-Z]yy  = yank and append that line to the [a-z] registry 
+
+:reg = see the content on registry[0-9]
+:reg [a,b..] = see the content on a,b.. registry, enter to get back
+  	

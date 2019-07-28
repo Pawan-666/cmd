@@ -1,0 +1,44 @@
+TEXT OBJECTS:
+caw : change/delete a word including delimiter(insert mode)
+ciw : change inner word(insert mode)
+das : deletes a sentence including space(insert mode)
+dis : deletes a sentece only(insert mode)
+	. to continue deleting/changing
+dap : deletes a entire paragraph including boundaries
+dip : deletes a paragraph, blank line remains 
+ci["/'/</`/{/)] : change/delete inside those tags, doesn't matter if opening or closed bracket is used
+	ca["/'/</`/{/)] : including the tags
+yi["/'/</`/{/)] : yank the content inside that tag to unknown registry
+	ya["/'/</`/{/)] : yank the content inside that tag to unknown registry including tags
+ 	:reg " : to see the content of the unknown registry
+cit : to make changes/deletes_1st inside the tag(any), useful in tags like of html 
+	cat: including tags
+
+INDENTATION
+
+>> : indent the no. of lines
+	[no]>>
+<< : remove the indentation(tabspace =8 is the default indentation)
+:set shiftwidth=[no] & Enter = to set indentation according to our need
+
+MACROS:
+
+q[a-z] = start recording a macro
+	q = stop recording a macro
+		:reg [a-z] = to see what's inside that macro 
+			@[a-z] = to follow that macro commands
+				[no.]@[a-z] = repeat that macro upto the no. of lines specified	
+				    @@ = to repeat the last macro
+q[A-Z] = to append macro to that register
+:[s_no],[e_no]normal @[a-z] = implement that macro upto the given range of lines
+
+EDITING A MACRO	
+Go to a blank line 
+	"[a-z]p  : paste the content of the  a register
+	   Edit it and enter Esc and 0 
+		"[a-z]y$ : yanks the edited content or that line to the end of the line
+
+Go to a blank line
+	let @[a-z] ='paste_the_macro_content_here_and_edit_write_a_macro_on_our_own'
+		cntrl+v=^
+			Esc=[

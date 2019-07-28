@@ -1,0 +1,33 @@
+vim [file1.txt] [file2.txt] ... =opens no. of files given
+	vim *.txt  =opens all the text file 
+:ls/:b  = to see all the files loaded in vim
+:b[no] = to open the file in listed no
+	:bTAb for auto completion and enter ok to open the needed file
+		:bp/bf to open previous/next file on the buffer list
+			:%a means it's the current active buffer
+			:+ means unsaved changes
+				:w to write our changes before switching to next buffer
+				:wall to write to all the buffers
+				:qall! to abandon all the buffers from editing(writing)
+:e [file4.txt]  =open another file in the current window
+:E =file explorer window(use j/k to move down and press Enter to  open it
+	:bd to get back 
+:badd [file?.txt] = add another file (doen't change the current window)
+:bd = unloads the current file 
+	:bd [no] = deletes the buffer at given no.
+	:[no.],[no]bd = give the range of buffers to unload
+	:%bd = unloads all the buffers
+
+:bufdo set nu  : sets line numbering for all the buffers(bufdo is used for global substitution
+:bufdo %s/[old]/[new]/g | w  : to do global substitution in all the files(%s-throughout the file,g-every word in line, | w -        											write in  every file before moving to next file
+
+
+:sp [file.txt] = splits the window horizontally with 2 files
+	:q = closes the current window 
+:Cntrl+w w/WW =move around the splited windows
+:vs [file.txt] = splits the window vertically with 2 files,each on each half
+:on  = closes all other windows with displaying only the current window
+:ba  = opens all the buffers at once 
+:windo %s/[old]/[new]/g  = to do global substitution on all open windows
+
+*sp and vs can be repeated to create more complex windows split if required*
