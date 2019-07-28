@@ -1,0 +1,58 @@
+Getting started with git:
+    After downloading or setting up git in machine type
+        $ git --version = to see the version of the git running in the system.
+    Go to the project folder where we want to do git stuff in the bash/terminal.
+        $ git init = to initialize the git folder
+        $ ls -la  = to see whether the git file is in there or not(.git folder is present if it worked) 
+        $ git add [file_name] = to add the file to the git folder(called as staging environment)
+            $ git add . = to add all the files in the directory to the git folder
+            $ git status = to see the tracked files and untracked files on git folder
+             (tracked file is ready to be commited) this command shows what's going with git at any moment
+Staging:
+    Before commiting if the file is added it goes to the staging stage .Only the file in the staging dir.
+    can be added to make a commit.
+    $ git checkout [file_name] to return to the previous version of the file in staging(discard the changes in the 
+     working directory)
+    $ git reset HEAD [file_name]  to remove the file from the staging(last staged)
+Commiting:
+    Comit is the record of the state of the folder ,whatever was in the staging environment will be saved
+    as a record in the record log.
+        $ git commit -m "any_message" = -m to add message and this whole commands commits whatever was in
+         the staging directory
+        $ git log : to see where we are at
+            *Checking git status/log command is good parctice
+
+Deleting:
+    If a file is deleted from the directory directly 1st check the git status,which says which file is deleted)
+        $ git checkout [deleted_fie_name] to recover that deleted file 
+        $ git rm [file_to_delete] to delete the file from the current project ,this directly 
+          puts the files to staging and ask for commit(we can commit if we want to put a delete log for the file)
+        $ git reset HEAD [deleted_staged_file] to remove the deleted file from staging
+        $ git add --all  to move everything into staging(any deletion and others too)
+
+
+File log:
+        $ git log  to check the id of the commit previously made.
+        $ git checkout [id] to fetch the file stage we want.
+        $ git branch [branch_name] [id] to make a new branch of the file just commited and edited
+        $ git branch  to see the branches available(git log shows only the log of the files in the current branch)
+        $ git checkout [branch_name] to switch to the branch we want
+        $ git branch [new_name] to make a new branch
+            when we create a branch we stay in the current branch, now when we make changes we are making changes in 
+            the current branch not the branch we just made.(making new branch is like save point)
+        $ git merge [branch_name] [current_branch] to merge that branch to the current branch
+        $ git branch -m [branch_name] [new_name] to change the name of the branch
+        $ git branch -D [branch_name] to delete the branch
+
+Github:
+	$ git clone [url] to download the repository in the current directory.
+	*only master branch is downloaded by default*
+		$ git branch -a  to see all the branches
+			$ git checkout -b [branch_name] [location on github(put origin part in)]  to grab this branch
+	$ git clone --mirror [url] .git  to download all the branches at once
+		$ git config --bool core.bare false
+		$ git reset --hard    these 2 commands to get the git log file.
+	$ git push origin master  to make addition and changes in our repository.(after staging and commiting)
+	$ git -b [branch_name] [url]  to download the specific branch.
+	$ rm -dfr .git    to delete the log files(.git folder)
+
