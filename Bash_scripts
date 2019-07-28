@@ -1,0 +1,50 @@
+Bash Scripts:
+
+1> Go to the directory where bash script file to be saved.
+2> nano [bash_script_name].sh  to create the bash script file.
+3> which [bash/python3]   to know the bash directory in this case which is  /bin/bash
+4> file [bash_script_name].sh   to the type and about of the script.
+5> bash [bash_script_name].sh to run that script created.
+6> Example of script written inside bash script created.
+   	1st line is mandotary.
+
+#!/bin/bash
+mkdir ~/Desktop/magic
+cd ~/Desktop/magic
+touch file{1..100}
+ls -lh ~/Desktop/magic > ~/Desktop/magic.log
+
+i>This file creates dir. called magic in Desktop
+ii>Changes the current working directory to magic dir.
+iii>creates 100 files inside magic directory.
+iv>information about files inside of magic dir. is sent to a file called magic.log in Desktop.
+
+7> cat [bash_script_name].sh   to see what script is inside that bash script just created.
+
+
+*Single line bash scripts can be done with aliases too.*
+
+
+8>  File backup bashscripts(in bash_bin directory)
+ Creating file in cmd
+	  nano backup.sh
+ Text inside nano file
+	 #!/bin/bash
+
+ 	tar -czf backup.tar.gz ~/{Documents,Downloads,Desktop,Pictures,Videos}
+ Running the bash file
+	bash backup.bash
+
+ tar -czf backup.tar.gz ~/{Documents,Downloads,Desktop,Pictures,Videos} 2>/dev/null
+ date >> ~/[dir. wher backup is created]/backups.log
+
+*Backup log file to know when back up is created(useful in crontab)
+
+*this redirection results in execution of script with any text in shell.*
+Renaming the backup file
+	mv backup.sh backup
+
+*chmod +x [file_name]   to make the file executible.*
+Making the backup file executible at once
+	chmod +x backup
+*Type backup in the cmd  backup will be created.*

@@ -1,0 +1,5 @@
+Open Source project:
+ uname -o   to know the operating system we're on.
+ lsb_release -a    to know about the ubuntu distribution we're using.
+ uname -m  to know the architecture used.
+ 

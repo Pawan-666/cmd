@@ -1,0 +1,10 @@
+processes:
+
+1>top   to find out which process/program consumes how much resources,in the top it shows how long is system is up, how many user are logged in, how many task are running,CPU uses and memory.
+
+2> ps -ef   to find out the Process Id(PID) and all the processes running.
+	ps -ef | grep ["Chromium Web Browser"/..] to find out PID of the individual process/program.
+
+*Cntrl + z   to stop/cancel the less command*
+
+3> kill PID  to kill the process running.

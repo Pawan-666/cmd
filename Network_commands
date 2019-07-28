@@ -1,0 +1,5 @@
+Network commands:
+
+ifconfig   to find out the ip address.
+ping [google.com/..]  to find out whether the host is alive or not.
+wget [web_address} to download a file.

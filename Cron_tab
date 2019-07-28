@@ -1,0 +1,37 @@
+Crontab:
+
+ crontab -e   to open crontab and select one of the options[1/2/3]
+
+Example: where editing is done:
+
+M: minutes  H: Hour  Dom: day of month  Mon: Month  Dow: day of the week
+ * means any(every)
+ Doesn't matter where data is filled as long as space(any) is maintained and every field is filled.
+
+	 m    h        dom    mon           dow                  command
+	 *    *         *      *             *                  echo "Hello World" >> ~/Desktop/hello.txt
+	 20   11        10   [1/JAN]	[0../6/SUN/MON/TUE/..]  echo "Hello World" >> ~/Desktop/hello.txt
+
+
+The star filled script runs command every minutes of every hours of every day of month on every month and on every day of the week.
+
+The data filled with no.s runs the command at 11:20 am on 10th day of the month in [Janaury/1st mon] on given day of the week.
+
+>> to allow to append data to file when new data is updated in that file.
+Command runs as soon as it's saved and exited from cron editor.
+
+
+
+ ls -a    to see all the dir(including hidden dir and hidden files)
+ .selected_editor is the default path to the editor(which is nano at the moment)
+ nano .selected_editor   to change the path to the editor we want(vim/..)
+
+
+Example:
+
+  m             h    dom          mon     dow              command
+0,12,30..*/15   *  5-10 or */3  JAN,DEC   1-5      bash ~/bash_bin/backup
+
+ We can have multiple options separated by commas as above or just */min  to run after space of minutes given. 
+
+ This crontab runs backup bash script we created in the time we specified as above and we could check the backups.log file to check when the backup is being updated.

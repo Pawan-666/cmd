@@ -1,0 +1,236 @@
+1. cntrl +D to close terminal.
+
+2. cntrl +L to clear terminal.
+
+3. type history to see the terminal history.
+	![NO.] to fetch that no of content in the history mentioned.
+
+4. type $PATH to know the path of the shell.
+	which [command_name] to know the path and location of the command entered.
+
+5. type man -k [command_name] to open the manual location of the command entered(sections of the manual pages there are in).
+	man [command_name] to read about the command in the manuals.
+
+6. type help [command_name] to read about the command if the command isn't in the manual.
+	Symbols used in the manual:
+	... = ellipses means multiple command options can be used
+	[]  = square brackets means it is optional
+	<>  = angle brackets means it is mandotary
+	|   = separater means only one of them can be used
+
+7. type tty to locate the terminal
+
+8.Redirection
+	cat >> output.txt   =to input and concacenate text in a file named output.txt
+	cntrl+c to return to the terminal while inputting text.
+	Using only one > truncates the previous entered results while >> concacenates
+	cat < output.txt    = reads the text entered previoulsy in file named output.txt
+	cat < output.txt >new.txt = redirects texts of output.txt file to new.txt file
+
+9.Piping(connects STDOUT of one command to STDIN of another command)
+	date | cut --delimiter=" " --field =1    =pipes date command with cut command.
+	date | tee fulldate.txt | cut --delimiter=" " --field= 1 >today.txt   = redirected after piped(tee command is used to save a 		snapshot without breaking pipeline)
+	date | xargs echo   = if the command doesn't accept standard input(STDIN) xargs can be used to pass it as arguments fo echo in 
+	this case.
+	
+10.Aliases(make our own commands)
+	Aliases are saved in .bash_aliases file in home folder.
+	a period(.) at the start of a filename makes that file hidden.
+	alias [alias_name]="commands ..."
+	aliases are accesssible when terminal is restarted.
+	Make sure the first command can be piped to.
+
+11.Navigating file system
+	pwd(print working directory) to show the current path.
+	ls to list all the directories and file in the current directory.
+	ls -F to list to see which file has directory.
+	ls -F>file.txt to make a text document about the list.
+	ls -lh to list with extra information.
+	ls -a to list all directories and files including hidden ones.
+
+	cd [directory/file_name] to get inside of one of the listed directory/file shown by ls command.
+	cd .. to get back once or to the parent directory.
+	cd to get the home directory which is the normal directory to start with in terminal.
+	Absolute path start with (/) directory.
+	Relative path start from current directory. 
+	cd / to get the root directory
+		once in root directory type cd ~/[any_directory_name] to get in any of the sub folder and file inside of root dr.
+
+	folder are in blue colors and files are in white color when listed.
+	Tab to speed up,auto completion of directory name.
+	Using gui right click and click options open with terminal.
+
+12.File extensions
+	go to the location and type file [file_name] to know the file extension.
+
+13.Wildcard(used to build patterns called regular expressions)
+	* is used to match anything regardless of length.
+	? is used to match anyghing but just for one place(according to the no.s of ? used)
+	[] is used to match one place but allows to specify options
+		[0-9][A-Z] can be used to match two place having a no. followed by uppercase letter.
+
+14.Creating files and directories
+	type touch [file_name] to create file in the current directory we're in.
+	type touch ~/[dir_name]/[file_name] to create file in the directory we want.
+	type echo ["any_text"] >[file_name] to create file with the input text inside it.
+
+	type mkdir [folder_name] to create dir. in the current directory we're in.
+	we can make dir. in any directory we want just by replacing touch by mkdir command.
+	type mkdir -p [dir_name1]/[dir_name2]/... to make directories with new path.
+
+	BRACE EXPANSION:
+	touch file{A..Z}.txt creates 26 files named as fileA-FileB.txt
+	mkdir {jan,feb,mar}_{2017..2022}   creates 18 folders in the current directory.
+	touch {jan,feb,mar}_{2017..2022}/file{1..100} creates 100 folders inside each directory we made before.
+
+	*Using underscore instead of space to name files and folders saves from complexity and better file rendering.
+
+15.Removing files
+	type rm [file_name] to delete any file.
+	type [rm dir_name]/[file_name] to delete file from relative path.
+	type ~/[rm dir_name]/[file_name] to delete file from absolute path(the directory we're not in).
+
+	Using wildcards with rm command:
+	rm *.[extension] deletes any file with that extension inside the directory we're in.
+	rm file* deletes files that start with name file regardless of any extension or the length of file name after file.
+	rm *2* deletes files that has 2 anywhere between first and last letter of the filename.
+		rm *[2,3] deletes files that has 2, 3 in between first and last letter of the filename.
+
+16.Removing folders
+	rm -r [dir_name] to delete that directory and  everything inside it.(-r means recursively)
+	rm -ri [dir_name] to delete  files and folders with prompt(Y/N).
+	rmdir [dir_name]/* to delete directory inside that dir_name which are empty. 
+
+17.Copying files and folders
+	cp [file1.txt] [file2.txt] copies the content of file1 to file2.(creates file2.txt if needed) 
+	cp [file1.txt] [file2.txt] [destination/] copies these two text file to the distination folder.
+	cp [destination/*] ./.. copies all the files of the destination folder to the folder we're in or to the parent folder.
+
+	cp -r [copy_folder]/[destination_folder] copies the copy folder to the destination folder.(recursive -r(means everything) is 		 used for copying folder)
+
+18.Renaming and moving files and folders
+	mv [old_filename] [new_filename]  changes the filename and foldername(doesn't alter the folder and file content).
+	mv [folder1]/* [path]   moves the content of folder1 to new path.
+	mv [file_name/folder_name] [path] moves the file to the destined path given.
+	mv [path/folder_name] [path/new_foldername]  moves the content of folder to new path with new folder name.
+
+
+19.Text editor(using nano)
+	nano [filename.txt]    creates a text file with given name.
+		^ means with Cntrl, M means with Alt.
+		click shift and Cntrl to fetch ^_
+		Write out means save.
+		"Where is" is used to find certain word.
+		"Read file" can be used to combine other text file.
+		sudo nano /etc/nanorc  to edit the nano configuration file.
+
+20. Locating files from database
+	locate *.[extension]    to locate all the files with that extension.
+	locate -i *.[extension]   to locate all the files with that extension(case insensitive in this case.)
+	locate -i --limit [no.] *.[extension]    to locate only 3 files with that extension.
+
+	locate -S    to find information about database.
+	locate -e *.[extension]    to locate the files which exists or functions properly.
+	locate -L *.[extension]   to locate the files which functions properly(add extra assurance to the -e command)
+	sudo updatedb   to update the database after making new files so that the database gets updated and locate command can find it.
+	locate -S >database_status.txt    to make a text file regarding database information.
+	We don't need to be in the current directory to search any file we want. We can locate it from anywhere.
+
+21. Finding from
+	find     to locate all the directories and sub directories and files from the current directory.
+	find [dir_name]     to find all the directories and sub directories with files which begins or includes dir_name given to find.
+	find . -maxdepth [no.]    to find upto required depth from the current directory we're in.
+	find . -maxdepth [no.] -type [d/f]      to find only directories or files upto specified depth.
+	find [/dir_name] -maxdepth [no.] -type [d/f]    to find only directories or files upto specified depth beginning from dir_name 			specified.
+	find -name "*[.ext]	to search files with extension as specified.
+	find . -maxdepth [no.] -iname "[file_name]"   to find the file with the name from the current directory.(iname for case 		insensitive)
+	find . -maxdepth [no.] -iname "[?.ext]"	   to find the file with a single digit on it before its extension.\
+	
+	find / type f -size +100k    to find all the files greater than size 100k starting from base directory.
+	sudo find / type f -size +100k | wc -l    gives the no. of lines having files  greater than size 100k .
+	sudo find / type f -size +100k -size -5M | wc -l     gives the no. of lines having files  greater than size 100k and smaller 
+		than five Megabytes.
+	sudo find / type f -size -100k -o -size +5M | wc -l     gives the no. of lines having files  greater than size 5M or smaller 
+		than 100K.
+
+	sudo find / type f -size -100k -o -size +5M -exec cp {} ~[dir/sub_dir] \;    copies everything to the  specified dir. 		
+	sudo find / type f -size -100k -o -size +5M -ok cp {} ~[dir/sub_dir]  \;  prompts before copying each file.
+	find /[dir] -maxdepth [no.] type f -size -100k -o/-exec -size +5M -exec cp {} ~[dir/sub_dir] \;    maxdepth can be specified too
+	find /[dir] -maxdepth [no.] type f -size -100k -o/-exec -size +5M -exec cp/mv {} ~[dir/sub_dir] \;   either copy or move.
+	find /[dir] -maxdepth [no.] type f -name"[file_name]" -exec cp/mv {} ~[dir/sub_dir] \;     copy or move specified file.
+
+22. Viewing files
+	cat [file1.ext] [file2.ext]      concatenate two files.
+	cat [file1.ext] [file2.ext] > [new_file.ext]   to concatenate two files into a new file.
+	cat [file[1-5].ext] > [new_file.ext]   to concatenate 5 files starting with file1 to file5 into a new file.
+
+	tac [file.ext]    to reverse the file content.
+	cat [file[1-5].ext] | tac    to concatenate and reverse later vertically.
+	cat [file[1-5].ext] | rev    to reverse  each line horizontally.
+
+	less [file.name/files]     allows to scroll smoothly.
+	cat [file[1-5].ext] | less     allows to concatenate and scroll smoothly.
+	cat [file[1-5].ext] | head -n [no.]    allows to concatenate and shows only the no. of lines specified in no. from top.
+	cat [file[1-5].ext] | tail -n [no.]    allows to concatenate and shows only the no. of lines specified in no. from last.
+	cat [file[1-5].ext] | head/tail -n [no.] | tac    allows to reverse vertically. 	
+	cat [file[1-5].ext] | wc -l     concatenates and shows the no. of lines there.
+
+23. Sorting files content
+	sort [file_name.txt]     sorts the words inside it in ascending order.
+	sort [file_name.txt] | less   to make it more readable.
+	sort -r [file_name.txt]    sorts in descending order.
+
+	sort -n [number_file.txt]   to sort numbers in ascending order.
+		sort  [number_file.txt]   sorts numbers in sequence order but not in ascending order mathematically.
+	sort -u [number_file.txt]    sorts numbers in ascending order uniquely eliminating other repetative no.s.
+	sort -ur [number_file.txt]   sorts numbers in ascending order uniquely eliminating other repetative no.s and reverses the order.
+
+
+	ls -l [/dir_name]   to list in readable form.
+	ls -l [/dir_name] | head -n [no.]    to list in readable form upto specified no. of lines.
+	ls -l [/dir_name] | head -n [no.] | sort -k [column_no.]n    to sort the fifth column.
+	ls -l [/dir_name] | head -n [no.] | sort -k [column_no.]nr    to sort the fifth column from largest to smallest.
+	ls -lh [/dir_name] | head -n [no.] | sort -k [column_no.]hr    to sort the fifth column in human readable format(only h or n)
+	ls -lh [/dir_name] | head -n [no.] | sort -k [column_no.]M    to sort the fifth column which contains months.
+
+24. Searching files content
+	grep [letter] [file_name.txt]     highlights where the specified letter has appeared in the specified text file.
+	grep -c [letter] [file_name.txt]    gives the no. of lines containing that letter.
+	wc -l [file_name.txt]    gives the no. of lines in that text file.
+	grep -ic [letter] [file_name.txt]    gives the no. of lines containing that letter(case insensitive)
+	grep -c ["words/phrase"] [file_name.txt]    gives the no. of lines containing that word/phrase.
+	grep  -v [letter/words/phrase] [file_name.txt]      gives all the text not containing the letter/words/phrase specified.
+	grep  -cv [letter/words/phrase] [file_name.txt]     gives the no. of lines not containing that letter.
+	grep [letter] [file_name.txt]  [file_name1.txt] ..     to read from multiple files.
+	grep -c[letter] [file_name.txt]  [file_name1.txt] ..    to see which file contains what no. of that letter.
+
+	ls [dir/] | grep [file_name]      to search that file inside that directory.
+	ls -lF / | grep  [opt/root/any_name]    to search inside root directory.
+	ls -F /etc     shows folders and files in the etc directory.(folders are followed by / and files are not)
+	ls -F /etc | grep -v /     shows only files in the etc dir. since it excludes folders inside it. 
+	ls -F /etc | grep -v / | sort -r      sorts reversly the result above.
+	ls -F /etc | grep -v / | sort -r > file.txt     to make a file of the result above.
+
+25. Archiving and extracting files(tar)
+	man -k [command_name] | grep [files/keyword]    to search specifically about that keyword inside the man page of that command.
+	tar -cvf [archive_name].tar [files[1-5]].txt    to make a archive file including 5 files.
+	tar -cvf [archive_name].tar files1.txt files2.txt files3.txt  to make a archive file inculding  3 files .
+	tar -tf [archive_name].tar    to check what is inside the archived tar file.
+	tar -xvf [archive_name].tar  extract files from the archived tar file into the current directory.
+
+24.Compressing files
+	gzip [archive_name].tar    to compress the file which results in .tar.gz file extension(gzip=fast but less size)
+	gunzip [archive_name].tar.gz    uncompress the file resulting in .tar file extension(before compressing stage.)
+
+	bzip2 [archive_name].tar    to compress the .tar file results in .tar.bz2 extension(bzip2=slow but more size)
+	bunzip2 [archive_name].tar.bz2 to uncompress the .tar.bz2 file resulting in .tar file(uncompressed version)   
+	ls -l [archive_name].tar.bz2   to see the size and details about the compressed file.
+
+	zip [archive_name].zip  files...   to make a zip file from collection of files.
+	unzip [archive_name].zip   to unzip those files(prompts individually)
+	file [archive_name].ext   to know abstract details about that file or archive.
+
+	tar -cv[j/z]f [archive_name].tar.[bz2/gz] files....    to make a archive and compress at the same time.
+	tar -xv[j/z]f [archive_name].tar.[bz2/gz]      to extract the compressed files.
+	*for small files use gzip, for large files(videos) use bzip2.
+	

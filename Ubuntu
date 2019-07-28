@@ -1,0 +1,16 @@
+Open Source project:
+1> uname -o   to know the operating system we're on.
+
+2> lsb_release -a    to know about the ubuntu distribution we're using.
+ uname -m  to know the architecture used.
+
+ 
+3> snap refresh
+4> flatpak update
+5> sudo apt-get autoremove/autoclean
+6> shutdown (no. of min)/-c
+7> firewall for linux(sudo ufw enable/disable)
+8> systemctl start tuxcutd
+9> upgrade half way f****
+    sudo rm -rf /car/lib/apt/list/*
+    apt install <list of held packages>
